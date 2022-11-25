@@ -85,26 +85,39 @@ class CW_Site_Announcements_Admin {
 		}
 
 		echo '<label for="cw_background_color">
-						<h4>' . __('Background Color', 'cw-announcement' ) . '</h4>
-						<input class="widefat color-picker" type="text" name="cw_background_color" id="cw_background_color" value="' . $a->background_color . '" />
+						<h4>' . esc_html__('Background Color', 'cw-announcement' ) . '</h4>
+						<input class="widefat color-picker" 
+						        type="text" 
+						        name="cw_background_color" 
+						        id="cw_background_color" 
+						        value="' . esc_attr($a->background_color) . '" />
 					</label>';
 
 		echo '<label for="cw_text_color">
-						<h4>' . __('Text Color', 'cw-announcement' ) . '</h4>
-						<input class="widefat color-picker" type="text" name="cw_text_color" id="cw_text_color" value="' . $a->text_color . '" />
+						<h4>' . esc_html__('Text Color', 'cw-announcement' ) . '</h4>
+						<input class="widefat color-picker" 
+                                type="text" 
+                                name="cw_text_color" 
+                                id="cw_text_color" 
+                                value="' . esc_attr($a->text_color) . '" 
+                        />
 					</label>';
 
 		$checked = '' == $a->url ? false : true;
-		echo '<h4>' . __('Link to URL', 'cw-announcement' ) . '</h4>
+		echo '<h4>' . esc_html__('Link to URL', 'cw-announcement' ) . '</h4>
 					<input type="checkbox" name="cw_enable_url" id="cw_enable_url" value="1" ' . checked( true, $checked, false ) . '>';
 
-		$url_attr = $checked == true ? '' : 'style="display: none;"';
-		echo '<div class="cw_announcement_url" ' . $url_attr . '>
+		$url_attr = $checked == true ? 'block;' : 'none;';
+		echo '<div class="cw_announcement_url" style="display:' . esc_attr($url_attr) . '">
 						<label for="cw_announcement_url">
-							<h4>' . __('URL Override', 'cw-announcement' ) . '<br>
-							<small>&#42;' . __('leave this blank to open the announcement in a modal', 'cw-announcement' ) . '</small>
+							<h4>' . esc_html__('URL Override', 'cw-announcement' ) . '<br>
+							<small>&#42;' . esc_html__('leave this blank to open the announcement in a modal', 'cw-announcement' ) . '</small>
 							</h4>
-							<input class="widefat" type="url" name="cw_announcement_url" id="cw_announcement_url" value="' . $a->url . '" />
+							<input class="widefat" 
+							        type="url" 
+							        name="cw_announcement_url" 
+							        id="cw_announcement_url" 
+							        value="' . esc_url($a->url) . '" />
 						</label>
 					</div>';
 
@@ -120,10 +133,10 @@ class CW_Site_Announcements_Admin {
 			}
 		}
 
-		echo '<h4>' . __('Is Closable?', 'cw-announcement' ) . '</h4>
+		echo '<h4>' . esc_html__('Is Closable?', 'cw-announcement' ) . '</h4>
 					<input type="checkbox" name="cw_is_announcement_closable" id="cw_is_announcement_closable" value="1" ' . checked( true, $checked, false ) . '>';
 
-		$closable_attr = $checked == true ? '' : 'style="display: none;"';
+		$closable_attr = $checked == true ? 'block;' : 'none;';
 
 		$closable_opts = array(
 			 '0' => __('Always Show', 'cw-announcement' ),
@@ -137,7 +150,8 @@ class CW_Site_Announcements_Admin {
 			 'forever' => __('Hide Forever', 'cw-announcement' ),
 			 );
 
-		echo '<div class="cw_closable_settings" ' . $closable_attr . '>
+
+		echo '<div class="cw_closable_settings" style="display:' . esc_attr($closable_attr) . '">
 					<label for="cw_closable_settings">
 					<h4>' . __('Duration', 'cw-announcement') . '<br>
 					<small>&#42;' . __('amount of time to hide this announcement from the user after they\'ve closed it', 'cw-announcement' ) . '</small></h4>
@@ -145,7 +159,7 @@ class CW_Site_Announcements_Admin {
 
 					foreach( $closable_opts as $k => $v ) {
 						$selected = $a->closable_duration == $k ? 'selected' : '';
-						echo '<option value="' . $k . '"' . $selected . '>' . $v . '</option>';
+						echo '<option value="' . esc_attr($k) . '"' . esc_attr($selected) . '>' . esc_html($v) . '</option>';
 					}
 
 		echo '</select>

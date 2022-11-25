@@ -156,7 +156,7 @@ class CW_Site_Announcements_Public {
 
 		endif;
 
-		echo $output;
+		echo wp_kses_post($output);
 
 	}
 
