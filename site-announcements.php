@@ -16,7 +16,7 @@
  * Plugin Name:       Site Announcements
  * Plugin URI:        https://codewrangler.io
  * Description:       Site Announcements allows you to broadcast site-wide messages to your visitors
- * Version:           1.0.4
+ * Version:           1.0.5
  * Author:            CodeWrangler, Inc.
  * Author URI:        https://codewrangler.io
  * License:           GPL-2.0+
